@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Kelvo coffee concentrate flavors and live inventory",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "tastingNote": { "type": "string" },
+        "stock": { "type": "number" },
+        "isPreorder": { "type": "boolean" }
+      },
+      "required": ["name", "price", "stock", "isPreorder"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order with items, contact info, and status",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "flavor": { "type": "string" },
+              "quantity": { "type": "number" }
+            }
+          }
+        },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "fulfilled"] },
+        "isPreorder": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customerName", "phone", "items", "totalAmount", "status", "isPreorder", "createdAt"]
+    }
+  },
+  "firestore": {
+    "products/{productId}": {
+      "entity": "Product",
+      "description": "Product inventory and details per flavor"
+    },
+    "orders/{orderId}": {
+      "entity": "Order",
+      "description": "Customer orders submitted via the pre-ordering and checkout flow"
+    }
+  }
+}

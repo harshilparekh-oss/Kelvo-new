@@ -1,0 +1,6 @@
+{
+  "name": "KELVO",
+  "description": "Kelvo makes bottled coffee concentrate — pour a shot into hot water, milk, or oat milk and it's ready in seconds. No brewing, no waiting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
